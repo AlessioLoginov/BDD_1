@@ -13,13 +13,9 @@ public class MoneyTransferTest {
 
     LoginPage loginPage;
 
-    @BeforeEach
-    void setup () {
-        var loginPage = open("http://localhost:9999", LoginPage.class);
-    }
-
     @Test
     void shouldTransferFromFirstToSecond() {
+        var loginPage = open("http://localhost:9999", LoginPage.class);
         var authInfo = DataHelper.getAuthInfo();
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = DataHelper.getVerificationCode();
@@ -41,6 +37,7 @@ public class MoneyTransferTest {
 
     @Test
     void shouldGetErrorMessageIfAmountMoreBalance() {
+        var loginPage = open("http://localhost:9999", LoginPage.class);
         var authInfo = DataHelper.getAuthInfo();
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = DataHelper.getVerificationCode();
